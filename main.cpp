@@ -4,6 +4,7 @@
 using namespace std;
 
 int eleccion;
+int j = 0;
 
 ifstream infile;
 ofstream outfile;
@@ -48,7 +49,7 @@ void menu_eleccion(int temp){
     {
     case 1:
         break;
-        
+
     case 2:
         break;
 
@@ -77,7 +78,6 @@ void menu_eleccion(int temp){
 void cvs_to_struct(){
     string dato;
     int i = 0;
-    int j = 0;
     while(infile){
         i++;
         switch(i){
