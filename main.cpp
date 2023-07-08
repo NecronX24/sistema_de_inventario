@@ -19,6 +19,10 @@ void cvs_to_struct();
 
 void agregarFun();
 
+void editarFun();
+
+void mostrarFun();
+
 void inicio();
 
 void menu_eleccion(int temp);
@@ -58,9 +62,13 @@ void menu_eleccion(int temp){
         break;
 
     case 2:
+
+    editarFun();
         break;
 
     case 3:
+
+    mostrarFun();
         break;
 
     case 4:
@@ -190,3 +198,57 @@ void agregarFun(){
      agregar.close();
 
   }
+  void editarFun(){
+
+    int numeroIngre;
+    int numeroEd;
+    int maxAux;
+
+    cout<<"ingrese ID del producto a editar:";
+    cin>>numeroIngre;
+
+    numeroEd=numeroIngre-1;
+
+    cout<<"Nombre:------"<<datos_inv[numeroEd].nombre<<endl;
+
+    cout<<"Precio:------"<<datos_inv[numeroEd].precio<<endl;
+
+    cout<<"Existencia:------"<<datos_inv[numeroEd].existencia<<endl;
+
+    cout<<"Maximo:------"<<datos_inv[numeroEd].max<<endl;
+
+    cout<<"Minimo:------"<<datos_inv[numeroEd].min<<endl;
+
+    cout<<"Ventas al dia:------"<<datos_inv[numeroEd].ventas_dia<<endl;
+
+    cout<<"Ventas al mes:------"<<datos_inv[numeroEd].ventas_mes<<endl;
+
+    cout<<"Ventas al ano:------"<<datos_inv[numeroEd].ventas_ano<<endl;
+  }
+    void mostrarFun(){
+
+    int numeroIngreMos;
+    int numeroMos;
+
+    cout<<"ingrese ID del producto a mostrar:";
+    cin>>numeroIngreMos;
+
+    numeroMos=numeroIngreMos-1;
+
+    cout<<"Nombre:------"<<datos_inv[numeroMos].nombre<<endl;
+
+    cout<<"Precio:------"<<datos_inv[numeroMos].precio<<endl;
+
+    cout<<"Existencia:------"<<datos_inv[numeroMos].existencia<<endl;
+
+    cout<<"Maximo:------"<<datos_inv[numeroMos].max<<endl;
+
+    cout<<"Minimo:------"<<datos_inv[numeroMos].min<<endl;
+
+    cout<<"Ventas al dia:------"<<datos_inv[numeroMos].ventas_dia<<endl;
+
+    cout<<"Ventas al mes:------"<<datos_inv[numeroMos].ventas_mes<<endl;
+
+    cout<<"Ventas al ano:------"<<datos_inv[numeroMos].ventas_ano<<endl;
+    }
+    
