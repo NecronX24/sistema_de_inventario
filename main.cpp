@@ -1,17 +1,15 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "Buscar.h"
 using namespace std;
 
 int eleccion;
-int j = 0;
+int productos = 0;
+string titulo;
 
 ifstream infile;
 ofstream outfile;
-
-struct inventario{
-string id, nombre, precio, existencia, max, min, ventas_dia, ventas_mes, ventas_ano;
-}datos_inv[10000];
 
 void cvs_to_struct();
 
@@ -59,8 +57,16 @@ void menu_eleccion(int temp){
     case 4:
         break;
 
-    case 5:
-        break;
+    case 5:{
+        cout<< datos_inv[0].nombre <<endl;
+        quicksort_Existencia(datos_inv,0,productos-1);
+        cout<< datos_inv[1].existencia <<endl;
+        cout<<datos_inv[1].existencia<<endl;
+        cout<<datos_inv[2].existencia<<endl;
+        cout<<datos_inv[3].existencia<<endl;
+        cout<<datos_inv[0].existencia<<endl;
+        cout<<titulo;
+        break;}
 
     case 6:
         break;
@@ -77,47 +83,55 @@ void menu_eleccion(int temp){
 
 void cvs_to_struct(){
     string dato;
+    int datoint;
     int i = 0;
+    int get_title=0;
     while(infile){
+        if(get_title==0){
+            getline(infile,dato,'\n');
+            titulo=dato;
+            get_title=1;
+        }
         i++;
         switch(i){
             case 1:
             getline(infile,dato,';');
-                datos_inv[j].id=dato;
+                datos_inv[productos].id=dato;
                 break;
             case 2:
             getline(infile,dato,';');
-                datos_inv[j].nombre=dato;
+                datos_inv[productos].nombre=dato;
                 break;
             case 3:
             getline(infile,dato,';');
-                datos_inv[j].precio=dato;
+                datos_inv[productos].precio=dato;
                 break;
             case 4:
-            getline(infile,dato,';');
-                datos_inv[j].existencia=dato;
+            //getline(infile,datoint,';');
+                infile>>datoint;
+                datos_inv[productos].existencia=datoint;
                 break;
             case 5:
             getline(infile,dato,';');
-                datos_inv[j].max=dato;
+                datos_inv[productos].max=dato;
                 break;
             case 6:
             getline(infile,dato,';');
-                datos_inv[j].min=dato;
+                datos_inv[productos].min=dato;
                 break;
             case 7:
             getline(infile,dato,';');
-                datos_inv[j].ventas_dia=dato;
+                datos_inv[productos].ventas_dia=dato;
                 break;
             case 8:
             getline(infile,dato,';');
-                datos_inv[j].ventas_mes=dato;
+                datos_inv[productos].ventas_mes=dato;
                 break;
             case 9:
             getline(infile,dato,'\n');
-                datos_inv[j].ventas_ano=dato;
+                datos_inv[productos].ventas_ano=dato;
                 i=0;
-                j++;
+                productos++;
                 break;
         }
     }
