@@ -136,48 +136,46 @@ void cvs_to_struct(){
 }
 void agregarFun(){
 
-    int num=productos;
+    int num=productos+1;
 
     cout<<"ID:"<<num<<endl;
-    datos_inv[num].id=num;
+
+    string datoID;
+    datoID.resize(num);
+    datoID=num;
 
     cout<<"Ingresa el nombre:"<<endl;
-    getline(cin,datos_inv[num].nombre);
-    cin.ignore();
+    cin>>datos_inv[num].nombre;
 
     cout<<"Ingresa el precio:"<<endl;
-    getline(cin,datos_inv[num].precio);
-    cin.ignore();
+    cin>>datos_inv[num].precio;
 
 
     cout<<"Ingresa la existencia:"<<endl;
     cin>>datos_inv[num].existencia;
-    cin.ignore();
 
+    string datoEx;
+    datoEx.resize(num);
+    datoEx=datos_inv[num].existencia;
 
     cout<<"Ingresa el maximo:"<<endl;
-    getline(cin,datos_inv[num].max);
-    cin.ignore();
+    cin>>datos_inv[num].max;
 
 
     cout<<"Ingresa el minimo:"<<endl;
-    getline(cin,datos_inv[num].min);
-    cin.ignore();
+    cin>>datos_inv[num].min;
 
 
     cout<<"Ingresa las ventas del dia:"<<endl;
-    getline(cin,datos_inv[num].ventas_dia);
-    cin.ignore();
+    cin>>datos_inv[num].ventas_dia;
 
 
     cout<<"Ingresa las ventas del mes:"<<endl;
-    getline(cin,datos_inv[num].ventas_mes);
-    cin.ignore();
+    cin>>datos_inv[num].ventas_mes;
 
 
     cout<<"Ingresa las ventas del ano(sus):"<<endl;
-    getline(cin,datos_inv[num].ventas_ano);
-    cin.ignore();
+    cin>>datos_inv[num].ventas_ano;
 
 
     agregar.open("C:/Users/J1/Desktop/archivo_main/Datos_Inventario.csv",ios::app);
@@ -185,17 +183,9 @@ void agregarFun(){
     if(agregar.fail()){
         cout<<"No se puede abrir tu vaina";
      }
-     string idcsv(datos_inv[num].id, num);
-     string nombrecsv(datos_inv[num].nombre, num);
-     string preciocsv(datos_inv[num].precio, num);
-     string existenciacsv(datos_inv[num].existencia, num);
-     string maxcsv(datos_inv[num].max, num);
-     string mincsv(datos_inv[num].min, num);
-     string ventasdiacsv(datos_inv[num].ventas_dia, num);
-     string ventasmescsv(datos_inv[num].ventas_mes, num);
-     string ventasanocsv(datos_inv[num].ventas_ano, num);
 
-     agregar<<"\n"<<idcsv+","<<nombrecsv+","<<preciocsv+","<<existenciacsv+","<<maxcsv+","<<mincsv+","<<ventasdiacsv+","<<ventasmescsv+","<<ventasanocsv<<endl;
+
+     agregar<<datoID+","<<datos_inv[num].nombre+","<<datos_inv[num].precio+","<<datoEx+","<<datos_inv[num].max+","<<datos_inv[num].min+","<<datos_inv[num].ventas_dia+","<<datos_inv[num].ventas_mes+","<<datos_inv[num].ventas_ano<<endl;
 
      agregar.close();
 
