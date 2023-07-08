@@ -58,14 +58,7 @@ void menu_eleccion(int temp){
         break;
 
     case 5:{
-        cout<< datos_inv[0].nombre <<endl;
-        quicksort_Existencia(datos_inv,0,productos-1);
-        cout<< datos_inv[1].existencia <<endl;
-        cout<<datos_inv[1].existencia<<endl;
-        cout<<datos_inv[2].existencia<<endl;
-        cout<<datos_inv[3].existencia<<endl;
-        cout<<datos_inv[0].existencia<<endl;
-        cout<<titulo;
+        quicksort_Existencia(datos_inv,0,productos-1); 
         break;}
 
     case 6:
