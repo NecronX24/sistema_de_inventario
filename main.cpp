@@ -2,11 +2,14 @@
 #include <fstream>
 #include <string>
 #include "Buscar.h"
+#include <sstream>
+
 using namespace std;
 
 int eleccion;
 int productos = 0;
 string titulo;
+string idaux;
 
 ifstream infile;
 ofstream outfile;
@@ -21,6 +24,7 @@ void inicio();
 void menu_eleccion(int temp);
 
 int main(){
+   
     infile.open("Datos_Inventario.csv");
      if (!infile){
         cout<<"No se encontro tu vaina"<< endl;
@@ -139,10 +143,9 @@ void agregarFun(){
     int num=productos+1;
 
     cout<<"ID:"<<num<<endl;
-
-    string datoID;
-    datoID.resize(num);
-    datoID=num;
+    stringstream ss;
+    ss<< num;
+    string datoid = ss.str();
 
     cout<<"Ingresa el nombre:"<<endl;
     cin>>datos_inv[num].nombre;
@@ -154,9 +157,7 @@ void agregarFun(){
     cout<<"Ingresa la existencia:"<<endl;
     cin>>datos_inv[num].existencia;
 
-    string datoEx;
-    datoEx.resize(num);
-    datoEx=datos_inv[num].existencia;
+    string datoex = to_string(datos_inv[num].existencia);
 
     cout<<"Ingresa el maximo:"<<endl;
     cin>>datos_inv[num].max;
@@ -184,8 +185,7 @@ void agregarFun(){
         cout<<"No se puede abrir tu vaina";
      }
 
-
-     agregar<<datoID+","<<datos_inv[num].nombre+","<<datos_inv[num].precio+","<<datoEx+","<<datos_inv[num].max+","<<datos_inv[num].min+","<<datos_inv[num].ventas_dia+","<<datos_inv[num].ventas_mes+","<<datos_inv[num].ventas_ano<<endl;
+     agregar<<datoid+";"<<datos_inv[num].nombre+";"<<datos_inv[num].precio+";"<<datoex+";"<<datos_inv[num].max+";"<<datos_inv[num].min+";"<<datos_inv[num].ventas_dia+";"<<datos_inv[num].ventas_mes+";"<<datos_inv[num].ventas_ano<<endl;
 
      agregar.close();
 
