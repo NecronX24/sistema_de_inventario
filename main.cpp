@@ -14,6 +14,8 @@ ofstream agregar;
 
 void cvs_to_struct();
 
+void agregarFun();
+
 void inicio();
 
 void menu_eleccion(int temp);
