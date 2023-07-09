@@ -28,12 +28,13 @@ void editarFun(int idprod){
     cout<<"Inserta el numero del dato que quieres editar:"<<endl;
     int edEleccion;
     cin>>edEleccion;
-  
-    switch (edEleccion){
+    
+    switch(edEleccion){
     case 1:
-    cout<<"Inserta el nuevo nombre:"<<endl;
-    cin>>datos_inv[idprod].nombre;
-        break;
+      cout<<"Inserta el nuevo nombre:"<<endl;
+      cin.ignore();
+      getline(cin, datos_inv[idprod].nombre);
+      break;
 
     case 2:
     cout<<"Inserta el nuevo precio:"<<endl;
@@ -68,6 +69,7 @@ void editarFun(int idprod){
     case 8:
     cout<<"Inserta las nuevas ventas por anio:"<<endl;
     cin>>datos_inv[idprod].ventas_ano;
+      break;
 
     default:
         break;
@@ -79,7 +81,9 @@ int partion_id(inventario arr[], int low, int high){
   int i = low-1;
   int j=0;
   for (j=low; j<=high-1; j++){
-    if(arr[j].id<=pivote.id){
+    int num = stoi(arr[j].ventas_ano);
+    int pivote_int = stoi(pivote.ventas_ano);
+    if(num<=pivote_int){
       i++;
       swap(arr[i],arr[j]);
     }
