@@ -88,6 +88,23 @@ int partion_V_Ano(inventario arr[], int low, int high){
   return (i+1);
 }
 
+//Orden por ID
+int partion_ID(inventario arr[], int low, int high){
+  inventario pivote = arr[high];
+  int i = low-1;
+  int j=0;
+  for (j=low; j<=high-1; j++){
+    int num = stoi(arr[j].id);
+    int pivote_int = stoi(pivote.id);
+    if(num<=pivote_int){
+      i++;
+      swap(arr[i],arr[j]);
+    }
+  }
+  swap(arr[i+1],arr[j]);
+  return (i+1);
+}
+
 void quicksort (inventario arr[], int low, int high, int eleccion){
   if (low<high){
     int pi;
@@ -110,6 +127,10 @@ void quicksort (inventario arr[], int low, int high, int eleccion){
 
     case 5:
       pi=partion_V_Ano(arr,low,high);
+      break;
+
+    case 6:
+      pi=partion_ID(arr,low,high);
       break;
 
     default:
