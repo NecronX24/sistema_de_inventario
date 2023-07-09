@@ -8,6 +8,9 @@ void agregar_ventas(int x){
     cin>> eleccion;
     switch(eleccion){
         case 0:
+            datos_inv[x].ventas_dia = "0";
+            datos_inv[x].ventas_mes = "0";
+            datos_inv[x].ventas_ano = "0";
             break;
         case 1:
             cout<<"Indica las ventas del dia: ";
@@ -32,9 +35,9 @@ void agregar(int x){
     cin>> datos_inv[x].precio;
     cout<<"Indica la cantidad en existencia del producto: ";
     cin>> datos_inv[x].existencia;
-    cout<<"Indica el maximo que puedes tener del producto";
+    cout<<"Indica el maximo que puedes tener del producto: ";
     cin>> datos_inv[x].max;
-    cout<<"Indica el minimo que puedes tener del producto";
+    cout<<"Indica el minimo que puedes tener del producto: ";
     cin>> datos_inv[x].min;  
     agregar_ventas(x);
 }

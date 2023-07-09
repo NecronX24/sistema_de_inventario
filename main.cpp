@@ -70,7 +70,7 @@ void menu_eleccion(int temp){
         break;
 
     case 5:{
-        quicksort_Existencia(datos_inv,0,productos-1);
+        menu_buscar(productos);
         break;}
 
     case 6:
@@ -88,7 +88,6 @@ void menu_eleccion(int temp){
 
 void csv_to_struct(){
     string dato;
-    int datoint;
     int get_title=0;
     int i = 0;
     while(infile){
