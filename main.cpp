@@ -8,6 +8,7 @@ using namespace std;
 int eleccion;
 int productos = 0;
 string titulo;
+string idaux;
 
 ifstream infile;
 ofstream outfile;
@@ -23,6 +24,7 @@ void menu_eleccion(int temp);
 void struct_to_csv();
 
 int main(){
+   
     infile.open("Datos_Inventario.csv");
      if (!infile){
         cout<<"No se encontro tu vaina"<< endl;
