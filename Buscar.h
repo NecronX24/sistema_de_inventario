@@ -8,7 +8,9 @@ int partion_Existencia(inventario arr[], int low, int high){
   int i = low-1;
   int j=0;
   for (j=low; j<=high-1; j++){
-    if(arr[j].existencia<=pivote.existencia){
+    int num_existencia = stoi(arr[j].existencia);
+    int pivote_existencia = stoi(pivote.existencia);
+    if(num_existencia<=pivote_existencia){
       i++;
       swap(arr[i],arr[j]);
     }

@@ -25,7 +25,7 @@ void agregar_ventas(int x){
 }
 
 void agregar(int x){
-    datos_inv[x].id = x+1;
+    datos_inv[x].id = to_string(x+1);
     cout<<"Indica el nombre del producto a agregar: ";
     cin>> datos_inv[x].nombre;
     cout<<"Indica el precio del producto: ";
