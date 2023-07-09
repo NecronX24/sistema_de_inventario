@@ -22,8 +22,9 @@ void menu_eleccion(int temp);
 
 void struct_to_csv();
 
+void volver_a_inicio();
+
 int main(){
-   
     infile.open("Datos_Inventario.csv");
      if (!infile){
         cout<<"No se encontro tu vaina"<< endl;
@@ -49,22 +50,39 @@ void inicio(){
     menu_eleccion(eleccion);
 }
 
+void volver_a_inicio(){
+    cout<< "Quiere volver al menu para seleccionar otra opcion? (1 para si y 0 para no)"<<endl;
+    cout<<">> ";
+    int eleccion;
+    cin>> eleccion;
+    switch(eleccion){
+        case 0:
+            struct_to_csv();
+            break;
+        case 1:
+            inicio();
+            break;
+        default:
+            cout<<"Elige bien";
+            volver_a_inicio();
+            break;
+    }
+}
+
 void menu_eleccion(int temp){
     switch (temp)
     {
     case 1:
         agregar(productos);
         productos++;
-        struct_to_csv();
         break;
 
     case 2:
         editarFun(productos);
-        struct_to_csv();
         break;
 
     case 3:
-    mostrarFun(productos);
+    mostrarFun();
         break;
 
     case 4:
@@ -72,11 +90,11 @@ void menu_eleccion(int temp){
 
     case 5:{
         menu_buscar(productos);
+        quicksort_id(datos_inv,0,productos-1);
         break;}
 
     case 6:
-    compraFun(productos);
-    struct_to_csv();
+        compraFun(productos);
         break;
 
     case 7:
@@ -87,6 +105,7 @@ void menu_eleccion(int temp){
         inicio();
         break;
     }
+    volver_a_inicio();
 }
 
 void csv_to_struct(){
