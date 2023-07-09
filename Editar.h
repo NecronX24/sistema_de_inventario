@@ -81,8 +81,8 @@ int partion_id(inventario arr[], int low, int high){
   int i = low-1;
   int j=0;
   for (j=low; j<=high-1; j++){
-    int num = stoi(arr[j].ventas_ano);
-    int pivote_int = stoi(pivote.ventas_ano);
+    int num = stoi(arr[j].id);
+    int pivote_int = stoi(pivote.id);
     if(num<=pivote_int){
       i++;
       swap(arr[i],arr[j]);
