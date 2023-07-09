@@ -3,6 +3,8 @@
 #include <string>
 #include "Buscar.h"
 #include "Agregar.h"
+#include "Editar.h"
+#include "mostrar.h"
 using namespace std;
 
 int productos = 0;
@@ -56,9 +58,12 @@ void menu_eleccion(int temp){
         break;
 
     case 2:
+        editarFun(productos);
+        struct_to_csv();
         break;
 
     case 3:
+    mostrarFun(productos);
         break;
 
     case 4:
@@ -138,7 +143,7 @@ void csv_to_struct(){
 
 void struct_to_csv(){
     int i = 0;
-    outfile.open("prueba.csv");
+    outfile.open("Datos_Inventario.csv");
     outfile<<titulo<<endl;
     while(outfile){ 
         if(i<productos){
