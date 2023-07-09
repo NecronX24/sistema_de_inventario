@@ -5,6 +5,7 @@
 #include "Agregar.h"
 #include "Editar.h"
 #include "mostrar.h"
+#include "compra.h"
 using namespace std;
 
 int productos = 0;
@@ -74,6 +75,8 @@ void menu_eleccion(int temp){
         break;}
 
     case 6:
+    compraFun(productos);
+    struct_to_csv();
         break;
 
     case 7:
