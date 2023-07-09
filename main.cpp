@@ -6,6 +6,7 @@
 #include "Editar.h"
 #include "mostrar.h"
 #include "compra.h"
+#include "buscarCod.h"
 using namespace std;
 
 int productos = 0;
@@ -86,6 +87,7 @@ void menu_eleccion(int temp){
         break;
 
     case 4:
+    buscarCodFun();
         break;
 
     case 5:{
