@@ -2,8 +2,8 @@
 #include <iostream>
 #include "struct.h"
 
-void mostrarFun(int idprod){
-
+void mostrarFun(){
+    int idprod;
     cout<<"ingrese ID del producto a mostrar:";
     cin>>idprod;
 
