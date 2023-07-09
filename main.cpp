@@ -5,17 +5,13 @@
 #include "Agregar.h"
 using namespace std;
 
-int eleccion;
 int productos = 0;
 string titulo;
-string idaux;
 
 ifstream infile;
 ofstream outfile;
 
 void csv_to_struct();
-
-void agregarFun();
 
 void inicio();
 
@@ -36,6 +32,7 @@ int main(){
 }
 
 void inicio(){
+    int eleccion;
     cout<< "Programa de Sistema de Inventario, elige tu opcion"<<endl;
     cout<< "1. Agregar un producto nuevo"<<endl;
     cout<< "2. Editar un producto" <<endl;
