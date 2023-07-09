@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include "Buscar.h"
+#include "Agregar.h"
 using namespace std;
 
 int eleccion;
@@ -11,11 +12,13 @@ string titulo;
 ifstream infile;
 ofstream outfile;
 
-void cvs_to_struct();
+void csv_to_struct();
 
 void inicio();
 
 void menu_eleccion(int temp);
+
+void struct_to_csv();
 
 int main(){
     infile.open("Datos_Inventario.csv");
@@ -23,7 +26,7 @@ int main(){
         cout<<"No se encontro tu vaina"<< endl;
         return 0;
     }
-    cvs_to_struct();
+    csv_to_struct();
     infile.close();
     inicio();
 }
@@ -46,6 +49,9 @@ void menu_eleccion(int temp){
     switch (temp)
     {
     case 1:
+        agregar(productos);
+        productos++;
+        struct_to_csv();
         break;
 
     case 2:
@@ -58,7 +64,8 @@ void menu_eleccion(int temp){
         break;
 
     case 5:{
-        quicksort_Existencia(datos_inv,0,productos-1); 
+        quicksort_Existencia(datos_inv,0,productos-1);
+        cout<<datos_inv[0].existencia<<";"<<datos_inv[1].existencia<<";"<<datos_inv[2].existencia;
         break;}
 
     case 6:
@@ -74,11 +81,11 @@ void menu_eleccion(int temp){
     }
 }
 
-void cvs_to_struct(){
+void csv_to_struct(){
     string dato;
     int datoint;
-    int i = 0;
     int get_title=0;
+    int i = 0;
     while(infile){
         if(get_title==0){
             getline(infile,dato,'\n');
@@ -88,44 +95,58 @@ void cvs_to_struct(){
         i++;
         switch(i){
             case 1:
-            getline(infile,dato,';');
+                getline(infile,dato,';');
                 datos_inv[productos].id=dato;
                 break;
             case 2:
-            getline(infile,dato,';');
+                getline(infile,dato,';');
                 datos_inv[productos].nombre=dato;
                 break;
             case 3:
-            getline(infile,dato,';');
+                getline(infile,dato,';');
                 datos_inv[productos].precio=dato;
                 break;
             case 4:
-            //getline(infile,datoint,';');
-                infile>>datoint;
-                datos_inv[productos].existencia=datoint;
+                getline(infile,dato,';');
+                datos_inv[productos].existencia=dato;
                 break;
             case 5:
-            getline(infile,dato,';');
+                getline(infile,dato,';');
                 datos_inv[productos].max=dato;
                 break;
             case 6:
-            getline(infile,dato,';');
+                getline(infile,dato,';');
                 datos_inv[productos].min=dato;
                 break;
             case 7:
-            getline(infile,dato,';');
+                getline(infile,dato,';');
                 datos_inv[productos].ventas_dia=dato;
                 break;
             case 8:
-            getline(infile,dato,';');
+                getline(infile,dato,';');
                 datos_inv[productos].ventas_mes=dato;
                 break;
             case 9:
-            getline(infile,dato,'\n');
+                getline(infile,dato,'\n');
                 datos_inv[productos].ventas_ano=dato;
                 i=0;
                 productos++;
                 break;
         }
+    }
+}
+
+void struct_to_csv(){
+    int i = 0;
+    outfile.open("prueba.csv");
+    outfile<<titulo<<endl;
+    while(outfile){ 
+        if(i<productos){
+            outfile<<datos_inv[i].id<<";"<<datos_inv[i].nombre<<";"<<datos_inv[i].precio<<";"<<datos_inv[i].existencia<<";"<<datos_inv[i].max<<";"<<datos_inv[i].min<<";"<<datos_inv[i].ventas_dia<<";"<<datos_inv[i].ventas_mes<<";"<<datos_inv[i].ventas_ano<<endl;
+        }
+        else{
+            outfile.close();
+        }
+        i++;
     }
 }
