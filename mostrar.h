@@ -4,7 +4,8 @@
 
 void mostrarFun(){
     int idprod;
-    cout<<"ingrese ID del producto a buscar:";
+    cout<<"ingrese ID del producto a buscar"<<endl;
+    cout<<">> ";
     cin>>idprod;
 
     idprod=idprod-1;

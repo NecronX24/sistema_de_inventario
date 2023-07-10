@@ -13,11 +13,14 @@ void agregar_ventas(int x){
             datos_inv[x].ventas_ano = "0";
             break;
         case 1:
-            cout<<"Indica las ventas del dia: ";
+            cout<<"Indica las ventas del dia"<<endl;
+            cout<<">> ";
             cin>> datos_inv[x].ventas_dia;
-            cout<<"Indica las ventas del mes: ";
+            cout<<"Indica las ventas del mes"<<endl;
+            cout<<">> ";
             cin>> datos_inv[x].ventas_mes;
-            cout<<"Indica las ventas del ano: ";
+            cout<<"Indica las ventas del ano"<<endl;
+            cout<<">> ";
             cin>> datos_inv[x].ventas_ano;
             break;
         default:
@@ -29,15 +32,20 @@ void agregar_ventas(int x){
 
 void agregar(int x){
     datos_inv[x].id = to_string(x+1);
-    cout<<"Indica el nombre del producto a agregar: ";
+    cout<<"Indica el nombre del producto a agregar"<<endl;
+    cout<<">> ";
     cin>> datos_inv[x].nombre;
-    cout<<"Indica el precio del producto: ";
+    cout<<"Indica el precio del producto"<<endl;
+    cout<<">> ";
     cin>> datos_inv[x].precio;
-    cout<<"Indica la cantidad en existencia del producto: ";
+    cout<<"Indica la cantidad en existencia del producto"<<endl;
+    cout<<">> ";
     cin>> datos_inv[x].existencia;
-    cout<<"Indica el maximo que puedes tener del producto: ";
+    cout<<"Indica el maximo que puedes tener del producto"<<endl;
+    cout<<">> ";
     cin>> datos_inv[x].max;
-    cout<<"Indica el minimo que puedes tener del producto: ";
+    cout<<"Indica el minimo que puedes tener del producto"<<endl;
+    cout<<">> ";
     cin>> datos_inv[x].min;  
     agregar_ventas(x);
 }
