@@ -47,7 +47,7 @@ void inicio(){
     cout<< "5. Buscar por otras opciones " <<endl;
     cout<< "6. Realizar una compra" <<endl;
     cout<< "7. Reporte de ventas (100 mejores)" <<endl;
-    cout<< ": "; 
+    cout<< ">> "; 
     cin>> eleccion;
     menu_eleccion(eleccion);
 }
