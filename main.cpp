@@ -7,6 +7,7 @@
 #include "mostrar.h"
 #include "compra.h"
 #include "buscarCod.h"
+#include "Reporte.h"
 using namespace std;
 
 int productos = 0;
@@ -83,16 +84,16 @@ void menu_eleccion(int temp){
         break;
 
     case 3:
-    mostrarFun();
+        mostrarFun();
         break;
 
     case 4:
-    buscarCodFun();
+        buscarCodFun();
         break;
 
     case 5:{
         menu_buscar(productos);
-        quicksort_id(datos_inv,0,productos-1);
+        quicksort(datos_inv,0,productos-1,6);
         break;}
 
     case 6:
@@ -100,6 +101,8 @@ void menu_eleccion(int temp){
         break;
 
     case 7:
+        menu_reporte(productos);
+        quicksort(datos_inv,0,productos-1,6);
         break;
 
     default:
