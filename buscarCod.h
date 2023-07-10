@@ -2,6 +2,7 @@
 #include <iostream>
 #include "struct.h"
 #include <iomanip>
+using namespace std;
 
 void buscarCodFun(){
     int idprod;
