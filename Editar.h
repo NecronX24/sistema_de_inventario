@@ -6,7 +6,7 @@
 void editarFun(int idprod){
 
     cout<<"Ingrese ID del producto a editar";
-    cout<<">>";
+    cout<<">> ";
     cin>>idprod;
 
     idprod=idprod-1;
