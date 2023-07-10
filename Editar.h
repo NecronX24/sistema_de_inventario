@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "struct.h"
+#include <iomanip>
 
 void editarFun(int idprod){
 
