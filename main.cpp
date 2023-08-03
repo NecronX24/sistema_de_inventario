@@ -1,13 +1,13 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "Buscar.h"
-#include "Agregar.h"
-#include "Editar.h"
-#include "mostrar.h"
-#include "compra.h"
-#include "buscarCod.h"
-#include "Reporte.h"
+#include "agregar_producto.h"
+#include "buscar_por_codigo.h"
+#include "buscar_producto.h"
+#include "compra_de_producto.h"
+#include "editar_producto.h"
+#include "mostrar_producto.h"
+#include "reporte_de_ventas.h"
 using namespace std;
 
 int productos = 0;
