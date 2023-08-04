@@ -49,9 +49,11 @@ void volver_a_inicio(){
     cout<<">> ";
     int eleccion;
     cin>> eleccion;
+    string nombre;
     switch(eleccion){
         case 0:
-            struct_to_csv();
+            nombre = "Datos_Inventario2.csv";
+            struct_to_csv(nombre);
             break;
         case 1:
             inicio();

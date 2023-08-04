@@ -69,9 +69,9 @@ void csv_to_struct(){
     }
 }
 
-void struct_to_csv(){
+void struct_to_csv(string direccion){
     int i = 0;
-    outfile.open("Datos_Inventario2.csv");
+    outfile.open(direccion);
     outfile<<titulo<<endl;
     while(outfile){ 
         if(i<productos){
