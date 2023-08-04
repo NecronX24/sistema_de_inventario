@@ -81,10 +81,7 @@ void csv_to_struct(){
             case 9:
                 getline(infile,dato,';');
                 datos_inv[productos].ventas_ano=dato;
-                break;
-            case 10:
-                getline(infile,dato,'\n');
-                datos_inv[productos].precio_promo=dato;
+                datos_inv[productos].precio_promo="0";
                 i=0;
                 productos++;
                 break;
