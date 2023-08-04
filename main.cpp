@@ -54,7 +54,7 @@ void volver_a_inicio(){
     string nombre;
     switch(eleccion){
         case 0:
-            nombre = "Datos_Inventario2.csv";
+            nombre = "Datos_Inventario.csv";
             struct_to_csv(nombre);
             break;
         case 1:
