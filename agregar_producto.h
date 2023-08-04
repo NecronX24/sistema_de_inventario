@@ -50,7 +50,9 @@ void agregar(int x){
         cout<<"Indica el minimo que puedes tener del producto"<<endl;
         cout<<">> ";
         cin>> datos_inv[x].min;
-        if (datos_inv[x].min>=datos_inv[x].max){
+        int max = stoi(datos_inv[x].max);
+        int min = stoi(datos_inv[x].min);
+        if (min>=max){
             cout<<"El minimo del producto no puede ser mayor o igual al maximo del producto"<<endl;
             error=1;
         }
