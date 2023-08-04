@@ -26,6 +26,7 @@ void compraFun(int idcomp){;
     int compEx=0; 
     compEx=stoi(datos_inv[idcomp].existencia);
 
+    eleccion=1;
     if(compEx-cantcomp<10){
         cout<<"ADVERTENCIA -- ESCAZES DE PRODUCTO"<<endl;
         cout<<"Desea continuar? (1 para si y 0 para no)"<<endl;
@@ -67,7 +68,7 @@ void compraFun(int idcomp){;
         //FACTURA
         int facturaeleccion;
         cout<<"Desea generar una factura? (1 para si y 0 para no)"<<endl;
-        cout<<">> "<<endl;
+        cout<<">> ";
         cin>>facturaeleccion;
 
         if(facturaeleccion == 1){
@@ -101,7 +102,7 @@ void compraFun(int idcomp){;
 
 outfactura.close();
 
-        cout<<"Factura realizada correctamente!";
+        cout<<"Factura realizada correctamente!"<<endl;
         }
         
 
