@@ -10,6 +10,7 @@
 #include "reporte_de_ventas.h"
 #include "borrar_producto.h"
 #include "copia_base_de_datos.h"
+#include "devolucion_de_producto.h"
 using namespace std;
 
 void inicio();
@@ -32,15 +33,16 @@ int main(){
 void inicio(){
     int eleccion;
     cout<< "Programa de Sistema de Inventario, elige tu opcion"<<endl;
-    cout<< "1. Agregar un producto nuevo"<<endl;
-    cout<< "2. Editar un producto" <<endl;
-    cout<< "3. Mostrar un producto" <<endl;
-    cout<< "4. Buscar un producto" <<endl;
-    cout<< "5. Buscar por otras opciones " <<endl;
-    cout<< "6. Realizar una compra" <<endl;
-    cout<< "7. Reporte de ventas (100 mejores)" <<endl;
-    cout<< "8. Borrar un producto por id"<<endl;
-    cout<< "9. Copiar la base de datos"<<endl;
+    cout<< " 1. Agregar un producto nuevo"<<endl;
+    cout<< " 2. Editar un producto" <<endl;
+    cout<< " 3. Mostrar un producto" <<endl;
+    cout<< " 4. Buscar un producto" <<endl;
+    cout<< " 5. Buscar por otras opciones " <<endl;
+    cout<< " 6. Realizar una compra" <<endl;
+    cout<< " 7. Reporte de ventas (100 mejores)" <<endl;
+    cout<< " 8. Borrar un producto por id"<<endl;
+    cout<< " 9. Copiar la base de datos"<<endl;
+    cout<< "10. Devolver un producto"<<endl;
     cout<< ">> "; 
     cin>> eleccion;
     menu_eleccion(eleccion);
@@ -110,7 +112,11 @@ void menu_eleccion(int temp){
 
     case 9:
         copiar_base();
-        break;    
+        break;   
+
+    case 10:
+        devolver_producto();
+        break; 
 
     default:
         cout<<"Eleccion erronea"<<endl;
