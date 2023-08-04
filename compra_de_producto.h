@@ -5,7 +5,8 @@
 #include "struct.h"
 #include <ctime>
 
-int eleccion, promoproducto;
+int eleccion, promoproducto, numerocaja;
+string nombreempleado, nombrecliente;
 
 using namespace std;
 
@@ -82,6 +83,18 @@ void compraFun(int idcomp){
         cin>>facturaeleccion;
 
         if(facturaeleccion == 1){
+            
+            cout<<"Ingrese la caja que realizo la compra:"<<endl;
+            cout<<">> "<<endl;
+            cin>>numerocaja;
+
+            cout<<"Ingresa el nombre del empleado que realizó la factura:"<<endl;
+            cout<<">> "<<endl;
+            cin>>nombreempleado;
+
+             cout<<"Ingresa el nombre del cliente que realizó la compra:"<<endl;
+            cout<<">> "<<endl;
+            cin>>nombrecliente;
 
     // Obtener la marca de tiempo actual
     time_t now = time(0);
@@ -102,6 +115,7 @@ void compraFun(int idcomp){
     outfactura.open("factura.txt");
     outfactura<<"               FACTURA"<<endl;
     outfactura<<"              "<<buffer<<endl;
+    outfactura<<"Cliente: "<<nombrecliente<<endl;
     outfactura<<"--------------------------------------------"<<endl<<endl;
     outfactura<<"Cantidad: "<<cantcomp<<endl;
     outfactura<<datos_inv[idcomp].nombre<<"    --------    "<<datos_inv[idcomp].precio<<endl<<endl;
@@ -111,8 +125,10 @@ void compraFun(int idcomp){
         promoprecio=total*(promoproducto/100);
     outfactura<<"Total(Incluida promocion): "<<promoprecio<<"$"<<endl<<endl;
       }else{
-    outfactura<<"Total: "<<total<<"$"<<endl<<endl;
+    outfactura<<"Total: "<<total<<"$"<<endl;
       }
+    outfactura<<"Realizado por caja "<<numerocaja<<endl;
+    outfactura<<"Realizada por empleado: "<<nombreempleado<<endl<<endl;
     outfactura<<"--------------------------------------------";
 
 outfactura.close();
