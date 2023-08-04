@@ -5,8 +5,8 @@
 #include "struct.h"
 #include <ctime>
 
-int eleccion, promoproducto, numerocaja;
-float descuentoporcentaje, totaldescuento;
+int eleccion, numerocaja;
+float descuentoporcentaje, totaldescuento,  promoproducto;
 string nombreempleado, nombrecliente;
 
 int numCompras;
@@ -56,6 +56,7 @@ void compraFun(int idcomp){
         if(promoeleccion == 1){
             cout<<"Inserta el porcentaje de promo a tu producto (entre 0 y 100)"<<endl;
             cin>>promoproducto;
+            promoproducto = 100-promoproducto;
         }
         int compAno;
         compAno=stoi(datos_inv[idcomp].ventas_ano);
@@ -91,19 +92,19 @@ void compraFun(int idcomp){
         if(facturaeleccion == 1){
             
             cout<<"Ingrese la caja que realizo la compra:"<<endl;
-            cout<<">> "<<endl;
+            cout<<">> ";
             cin>>numerocaja;
 
             cout<<"Ingresa el nombre del empleado que realizó la factura:"<<endl;
-            cout<<">> "<<endl;
+            cout<<">> ";
             cin>>nombreempleado;
 
              cout<<"Ingresa el nombre del cliente que realizó la compra:"<<endl;
-            cout<<">> "<<endl;
+            cout<<">> ";
             cin>>nombrecliente;
 
-            cout<<"Indica la cantidad de compras del cliente:"<<endl;
-            cout<<">> "<<endl;
+            cout<<"Indica la cantidad de veces que ha comprado en la tienda:"<<endl;
+            cout<<">> ";
             cin>>numCompras;
 
     // Obtener la marca de tiempo actual
@@ -118,8 +119,8 @@ void compraFun(int idcomp){
     strftime(buffer, 80, "%d/%m/%Y", timeinfo);
 
     //Impresión de la factura
-    int total;
-    total=stoi(datos_inv[idcomp].precio);
+    float total;
+    total=stof(datos_inv[idcomp].precio);
         total=total*cantcomp;
 
     outfactura.open("factura.txt");
@@ -129,7 +130,7 @@ void compraFun(int idcomp){
     outfactura<<"--------------------------------------------"<<endl<<endl;
     outfactura<<"Cantidad: "<<cantcomp<<endl;
       if(promoeleccion == 1){
-        int promoprecio;
+        float promoprecio;
         promoprecio=total*(promoproducto/100);
     outfactura<<datos_inv[idcomp].nombre<<"    --------    "<<promoprecio<<endl<<endl;
       }else{
