@@ -8,6 +8,7 @@
 #include "editar_producto.h"
 #include "mostrar_producto.h"
 #include "reporte_de_ventas.h"
+#include "borrar_producto.h"
 using namespace std;
 
 void inicio();
@@ -37,6 +38,7 @@ void inicio(){
     cout<< "5. Buscar por otras opciones " <<endl;
     cout<< "6. Realizar una compra" <<endl;
     cout<< "7. Reporte de ventas (100 mejores)" <<endl;
+    cout<< "8. Agregar un producto nuevo"<<endl;
     cout<< ">> "; 
     cin>> eleccion;
     menu_eleccion(eleccion);
@@ -93,6 +95,10 @@ void menu_eleccion(int temp){
     case 7:
         menu_reporte(productos);
         quicksort(datos_inv,0,productos-1,6);
+        break;
+
+    case 8:
+        borrar_producto();
         break;
 
     default:
