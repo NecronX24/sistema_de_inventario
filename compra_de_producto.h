@@ -5,14 +5,14 @@
 #include "struct.h"
 #include <ctime>
 
-int eleccion;
+int eleccion, promoproducto;
 
 using namespace std;
 
 ifstream onfactura;
 ofstream outfactura;
 
-void compraFun(int idcomp){;
+void compraFun(int idcomp){
     cout<<"Inserta el ID del producto que quieres comprar"<<endl;
     cout<<">> ";
     cin>>idcomp;
@@ -26,20 +26,37 @@ void compraFun(int idcomp){;
     int compEx=0; 
     compEx=stoi(datos_inv[idcomp].existencia);
 
-    if(compEx-cantcomp<10){
+    if(cantcomp>=compEx){
+        cout<<"No se puede procesar tu compra(Falta de existencia)"<<endl<<"Existencia: "<<compEx<<endl;
+    }else if(compEx-cantcomp<10){
         cout<<"ADVERTENCIA -- ESCAZES DE PRODUCTO"<<endl;
         cout<<"Desea continuar? (1 para si y 0 para no)"<<endl;
         cout<<">> ";
-        cin>>eleccion;}
+        cin>>eleccion;
+    }
 
     if(eleccion == 0){
         compraFun(idcomp); 
     }else{
-
-    
-    if (cantcomp<=compEx){
+        if (cantcomp<=compEx){
         //Suma de la compra
 
+        //PROMO AÑADIDA
+        int promoeleccion;
+        cout<<"Deseas insertar una promo a tu producto? (1 para si y 0 para no)"<<endl;
+        cin>>promoeleccion;
+
+        switch(promoeleccion){
+            case 0:
+            compraFun(idcomp);
+            break;
+
+            case 1:
+            cout<<"Inserta el porcentaje de promo a tu producto (entre 0 y 100)"<<endl;
+            cin>>promoproducto;
+            break;
+
+        }
         int compAno;
         compAno=stoi(datos_inv[idcomp].ventas_ano);
         compAno=compAno+cantcomp;
@@ -63,6 +80,7 @@ void compraFun(int idcomp){;
         datos_inv[idcomp].existencia=to_string(compEx);
 
         cout<<"Compra hecha exitosamente!"<<endl;
+    
 
         //FACTURA
         int facturaeleccion;
@@ -96,7 +114,13 @@ void compraFun(int idcomp){;
     outfactura<<"Cantidad: "<<cantcomp<<endl;
     outfactura<<datos_inv[idcomp].nombre<<"    --------    "<<datos_inv[idcomp].precio<<endl<<endl;
     outfactura<<"--------------------------------------------"<<endl<<endl;
+      if(promoeleccion == 1){
+        int promoprecio;
+        promoprecio=total*(promoproducto/100);
+    outfactura<<"Total(Incluida promocion): "<<promoprecio<<"$"<<endl<<endl;
+      }else{
     outfactura<<"Total: "<<total<<"$"<<endl<<endl;
+      }
     outfactura<<"--------------------------------------------";
 
 outfactura.close();
