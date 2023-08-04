@@ -10,7 +10,7 @@ int productos = 0;
 string titulo;
 
 struct inventario{
-string nombre, precio, id, existencia,max, min, ventas_dia, ventas_mes, ventas_ano;
+string nombre, precio, id, existencia,max, min, ventas_dia, ventas_mes, ventas_ano,precio_promo;
 }; 
 
 int lenght = 1001;
@@ -79,8 +79,12 @@ void csv_to_struct(){
                 datos_inv[productos].ventas_mes=dato;
                 break;
             case 9:
-                getline(infile,dato,'\n');
+                getline(infile,dato,';');
                 datos_inv[productos].ventas_ano=dato;
+                break;
+            case 10:
+                getline(infile,dato,'\n');
+                datos_inv[productos].precio_promo=dato;
                 i=0;
                 productos++;
                 break;
@@ -94,7 +98,7 @@ void struct_to_csv(string direccion){
     outfile<<titulo<<endl;
     while(outfile){ 
         if(i<productos){
-            outfile<<datos_inv[i].id<<";"<<datos_inv[i].nombre<<";"<<datos_inv[i].precio<<";"<<datos_inv[i].existencia<<";"<<datos_inv[i].max<<";"<<datos_inv[i].min<<";"<<datos_inv[i].ventas_dia<<";"<<datos_inv[i].ventas_mes<<";"<<datos_inv[i].ventas_ano<<endl;
+            outfile<<datos_inv[i].id<<";"<<datos_inv[i].nombre<<";"<<datos_inv[i].precio<<";"<<datos_inv[i].existencia<<";"<<datos_inv[i].max<<";"<<datos_inv[i].min<<";"<<datos_inv[i].ventas_dia<<";"<<datos_inv[i].ventas_mes<<";"<<datos_inv[i].ventas_ano<<";"<<datos_inv[i].precio_promo<<endl;
         }
         else{
             outfile.close();
