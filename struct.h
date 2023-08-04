@@ -6,20 +6,39 @@ using namespace std;
 
 ifstream infile;
 ofstream outfile;
-
 int productos = 0;
 string titulo;
 
-
 struct inventario{
 string nombre, precio, id, existencia,max, min, ventas_dia, ventas_mes, ventas_ano;
-}datos_inv[10000];
+}; 
+
+int lenght = 1001;
+inventario *datos_inv=new inventario [1001];
+
+void extender_datos_inv(){
+    inventario *temp= new inventario[lenght];
+            for (int i=0; i<productos; i++){
+                temp[i]=datos_inv[i];
+            }
+            delete[] datos_inv;
+            lenght = lenght * 2;
+            datos_inv = new inventario [lenght];
+            for (int i=0; i<productos; i++){
+                datos_inv[i]=temp[i];
+            }
+            delete[] temp;
+}
+
 
 void csv_to_struct(){
     string dato;
     int get_title=0;
     int i = 0;
     while(infile){
+        if (productos>=lenght){
+            extender_datos_inv();
+        }
         if(get_title==0){
             getline(infile,dato,'\n');
             titulo=dato;

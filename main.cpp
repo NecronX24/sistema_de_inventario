@@ -71,6 +71,9 @@ void menu_eleccion(int temp){
     switch (temp)
     {
     case 1:
+        if (productos>=lenght){
+            extender_datos_inv();
+        }
         agregar(productos);
         productos++;
         break;
