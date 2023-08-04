@@ -79,7 +79,7 @@ void csv_to_struct(){
                 datos_inv[productos].ventas_mes=dato;
                 break;
             case 9:
-                getline(infile,dato,';');
+                getline(infile,dato,'\n');
                 datos_inv[productos].ventas_ano=dato;
                 datos_inv[productos].precio_promo="0";
                 i=0;
@@ -95,7 +95,7 @@ void struct_to_csv(string direccion){
     outfile<<titulo<<endl;
     while(outfile){ 
         if(i<productos){
-            outfile<<datos_inv[i].id<<";"<<datos_inv[i].nombre<<";"<<datos_inv[i].precio<<";"<<datos_inv[i].existencia<<";"<<datos_inv[i].max<<";"<<datos_inv[i].min<<";"<<datos_inv[i].ventas_dia<<";"<<datos_inv[i].ventas_mes<<";"<<datos_inv[i].ventas_ano<<";"<<datos_inv[i].precio_promo<<endl;
+            outfile<<datos_inv[i].id<<";"<<datos_inv[i].nombre<<";"<<datos_inv[i].precio<<";"<<datos_inv[i].existencia<<";"<<datos_inv[i].max<<";"<<datos_inv[i].min<<";"<<datos_inv[i].ventas_dia<<";"<<datos_inv[i].ventas_mes<<";"<<datos_inv[i].ventas_ano<<";"<<endl;
         }
         else{
             outfile.close();
