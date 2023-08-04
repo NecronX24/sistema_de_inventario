@@ -46,16 +46,9 @@ void compraFun(int idcomp){
         cout<<"Deseas insertar una promo a tu producto? (1 para si y 0 para no)"<<endl;
         cin>>promoeleccion;
 
-        switch(promoeleccion){
-            case 0:
-            compraFun(idcomp);
-            break;
-
-            case 1:
+        if(promoeleccion == 1){
             cout<<"Inserta el porcentaje de promo a tu producto (entre 0 y 100)"<<endl;
             cin>>promoproducto;
-            break;
-
         }
         int compAno;
         compAno=stoi(datos_inv[idcomp].ventas_ano);
@@ -85,14 +78,13 @@ void compraFun(int idcomp){
         //FACTURA
         int facturaeleccion;
         cout<<"Desea generar una factura? (1 para si y 0 para no)"<<endl;
-        cout<<">> "<<endl;
+        cout<<">> ";
         cin>>facturaeleccion;
 
         if(facturaeleccion == 1){
 
     // Obtener la marca de tiempo actual
     time_t now = time(0);
-    
     // Convertir la marca de tiempo en una estructura tm con la fecha y hora actual
     tm* timeinfo = localtime(&now);
     
@@ -125,7 +117,7 @@ void compraFun(int idcomp){
 
 outfactura.close();
 
-        cout<<"Factura realizada correctamente!";
+        cout<<"Factura realizada correctamente!"<<endl;
         }
         
 
