@@ -2,6 +2,13 @@
 #include <iostream>
 using namespace std;
 
+ifstream infile;
+ofstream outfile;
+
+int productos = 0;
+string titulo;
+
+
 struct inventario{
 string nombre, precio, id, existencia,max, min, ventas_dia, ventas_mes, ventas_ano;
 }datos_inv[10000];
@@ -62,7 +69,7 @@ void csv_to_struct(){
 
 void struct_to_csv(){
     int i = 0;
-    outfile.open("Datos_Inventario.csv");
+    outfile.open("Datos_Inventario2.csv");
     outfile<<titulo<<endl;
     while(outfile){ 
         if(i<productos){

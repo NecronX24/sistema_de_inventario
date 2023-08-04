@@ -10,12 +10,6 @@
 #include "reporte_de_ventas.h"
 using namespace std;
 
-int productos = 0;
-string titulo;
-
-ifstream infile;
-ofstream outfile;
-
 void inicio();
 
 void menu_eleccion(int temp);
