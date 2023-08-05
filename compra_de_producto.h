@@ -6,12 +6,10 @@
 #include <ctime>
 
 int eleccion, numerocaja;
-float descuentoporcentaje, totaldescuento,  promoproducto;
+float descuentoporcentaje, totaldescuento,  promoproducto, preciofloat,calculo;
 string nombreempleado, nombrecliente;
 
 int numCompras;
-bool esClienteFrecuente = false;
-double descuento = 0.0;
 
 using namespace std;
 
@@ -119,7 +117,7 @@ void compraFun(int idcomp){
     strftime(buffer, 80, "%d/%m/%Y", timeinfo);
 
     //Impresión de la factura
-    float total;
+    float total=0;
     total=stof(datos_inv[idcomp].precio);
         total=total*cantcomp;
 
@@ -127,37 +125,29 @@ void compraFun(int idcomp){
     outfactura<<"               FACTURA"<<endl;
     outfactura<<"              "<<buffer<<endl;
     outfactura<<"Cliente: "<<nombrecliente<<endl;
+    outfactura<<"Realizado por caja "<<numerocaja<<endl;
+    outfactura<<"Cajero: "<<nombreempleado<<endl;
     outfactura<<"--------------------------------------------"<<endl<<endl;
     outfactura<<"Cantidad: "<<cantcomp<<endl;
-      if(promoeleccion == 1){
-        float promoprecio;
-        promoprecio=total*(promoproducto/100);
-    outfactura<<datos_inv[idcomp].nombre<<"    --------    "<<promoprecio<<endl<<endl;
-      }else{
     outfactura<<datos_inv[idcomp].nombre<<"    --------    "<<datos_inv[idcomp].precio<<endl<<endl;
-      }
     outfactura<<"--------------------------------------------"<<endl<<endl;
 
+    preciofloat=total;
+
     //descuentos
-    if (numCompras >= 100) {
-        esClienteFrecuente = true;
+     if (numCompras >= 100) {
+        preciofloat=preciofloat*0.85;       // Verificar si es cliente frecuente
+        if (numCompras >= 300) {
+            // Calcular el descuento adicional del 2%
+            calculo = preciofloat*0.02;
+            preciofloat= preciofloat-calculo;
+        } 
+     }
+    if(numCompras>=100){
+          outfactura<<"Total(Con descuento): "<<preciofloat<<"$"<<endl;
+    }else{
+    outfactura<<"Total(sin descuento): "<<total<<"$"<<endl<<endl;
     }
-
-      if (esClienteFrecuente) {
-        descuento = 0.15; // Descuento del 15% para clientes frecuentes
-
-        // Calcular incremento adicional por cada 300 compras
-        int numComprasAdicionales = numCompras - 100;
-        int incrementoPorCada300Compras = numComprasAdicionales / 300 * 2;
-        descuento += incrementoPorCada300Compras * 0.01; // Aumento del 2% por cada 300 compras adicionales
-        descuentoporcentaje=descuento*100;
-        totaldescuento=total*descuentoporcentaje;
-
-        outfactura<<"Total: "<<totaldescuento<<"$"<<endl;
-    }
-    outfactura<<"Total: "<<total<<"$"<<endl;
-    outfactura<<"Realizado por caja "<<numerocaja<<endl;
-    outfactura<<"Realizada por empleado: "<<nombreempleado<<endl<<endl;
     outfactura<<"--------------------------------------------";
 
 outfactura.close();
@@ -173,3 +163,4 @@ outfactura.close();
   
 }
 }
+
