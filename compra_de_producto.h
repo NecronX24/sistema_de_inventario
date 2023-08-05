@@ -4,20 +4,41 @@
 #include <fstream>
 #include "struct.h"
 #include <ctime>
+using namespace std;
 
-int eleccion, numerocaja;
+int eleccion, numerocaja, producto_comprado;
 float descuentoporcentaje, totaldescuento,  promoproducto, preciofloat,calculo;
 string nombreempleado, nombrecliente;
 
 int numCompras;
 
-using namespace std;
+struct compra {
+    string nombre, precio, cantidad;
+};
+int lenght_compra = 1;
+compra* productos_compra = new compra [1];
+
+void extender_datos_compra(){
+    compra *temp= new compra[lenght_compra];
+            for (int i=0; i<producto_comprado; i++){
+                temp[i]=productos_compra[i];
+            }
+            delete[] productos_compra;
+            lenght_compra = lenght_compra * 2;
+            productos_compra = new inventario [lenght_compra];
+            for (int i=0; i<producto_comprado; i++){
+                productos_compra[i]=temp[i];
+            }
+            delete[] temp;
+} 
 
 ifstream onfactura;
 ofstream outfactura;
 
 void compraFun(int idcomp){
     eleccion=1;
+    ciclo = 1;
+    do{
     cout<<"Inserta el ID del producto que quieres comprar"<<endl;
     cout<<">> ";
     cin>>idcomp;
@@ -46,7 +67,7 @@ void compraFun(int idcomp){
         if (cantcomp<=compEx){
         //Suma de la compra
 
-        //PROMO AÑADIDA
+        /*PROMO AÑADIDA
         int promoeleccion;
         cout<<"Deseas insertar una promo a tu producto? (1 para si y 0 para no)"<<endl;
         cin>>promoeleccion;
@@ -55,7 +76,7 @@ void compraFun(int idcomp){
             cout<<"Inserta el porcentaje de promo a tu producto (entre 0 y 100)"<<endl;
             cin>>promoproducto;
             promoproducto = 100-promoproducto;
-        }
+        }*/
         int compAno;
         compAno=stoi(datos_inv[idcomp].ventas_ano);
         compAno=compAno+cantcomp;
