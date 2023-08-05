@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include "struct.h"
-#include "Buscar.h"
+#include "buscar_producto.h"
 #include <iomanip>
 using namespace std;
 

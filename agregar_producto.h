@@ -41,11 +41,21 @@ void agregar(int x){
     cout<<"Indica la cantidad en existencia del producto"<<endl;
     cout<<">> ";
     cin>> datos_inv[x].existencia;
-    cout<<"Indica el maximo que puedes tener del producto"<<endl;
-    cout<<">> ";
-    cin>> datos_inv[x].max;
-    cout<<"Indica el minimo que puedes tener del producto"<<endl;
-    cout<<">> ";
-    cin>> datos_inv[x].min;  
+    int error;
+    do{
+        error = 0;
+        cout<<"Indica el maximo que puedes tener del producto"<<endl;
+        cout<<">> ";
+        cin>> datos_inv[x].max;
+        cout<<"Indica el minimo que puedes tener del producto"<<endl;
+        cout<<">> ";
+        cin>> datos_inv[x].min;
+        int max = stoi(datos_inv[x].max);
+        int min = stoi(datos_inv[x].min);
+        if (min>=max){
+            cout<<"El minimo del producto no puede ser mayor o igual al maximo del producto"<<endl;
+            error=1;
+        }
+    }while (error == 1);
     agregar_ventas(x);
 }

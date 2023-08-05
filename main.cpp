@@ -1,28 +1,21 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "Buscar.h"
-#include "Agregar.h"
-#include "Editar.h"
-#include "mostrar.h"
-#include "compra.h"
-#include "buscarCod.h"
-#include "Reporte.h"
+#include "agregar_producto.h"
+#include "buscar_por_codigo.h"
+#include "buscar_producto.h"
+#include "compra_de_producto.h"
+#include "editar_producto.h"
+#include "mostrar_producto.h"
+#include "reporte_de_ventas.h"
+#include "borrar_producto.h"
+#include "copia_base_de_datos.h"
+#include "devolucion_de_producto.h"
 using namespace std;
-
-int productos = 0;
-string titulo;
-
-ifstream infile;
-ofstream outfile;
-
-void csv_to_struct();
 
 void inicio();
 
 void menu_eleccion(int temp);
-
-void struct_to_csv();
 
 void volver_a_inicio();
 
@@ -40,13 +33,16 @@ int main(){
 void inicio(){
     int eleccion;
     cout<< "Programa de Sistema de Inventario, elige tu opcion"<<endl;
-    cout<< "1. Agregar un producto nuevo"<<endl;
-    cout<< "2. Editar un producto" <<endl;
-    cout<< "3. Mostrar un producto" <<endl;
-    cout<< "4. Buscar un producto" <<endl;
-    cout<< "5. Buscar por otras opciones " <<endl;
-    cout<< "6. Realizar una compra" <<endl;
-    cout<< "7. Reporte de ventas (100 mejores)" <<endl;
+    cout<< " 1. Agregar un producto nuevo"<<endl;
+    cout<< " 2. Editar un producto" <<endl;
+    cout<< " 3. Mostrar un producto" <<endl;
+    cout<< " 4. Buscar un producto" <<endl;
+    cout<< " 5. Buscar por otras opciones " <<endl;
+    cout<< " 6. Realizar una compra" <<endl;
+    cout<< " 7. Reporte de ventas (100 mejores)" <<endl;
+    cout<< " 8. Borrar un producto por id"<<endl;
+    cout<< " 9. Copiar la base de datos"<<endl;
+    cout<< "10. Devolver un producto"<<endl;
     cout<< ">> "; 
     cin>> eleccion;
     menu_eleccion(eleccion);
@@ -57,9 +53,11 @@ void volver_a_inicio(){
     cout<<">> ";
     int eleccion;
     cin>> eleccion;
+    string nombre;
     switch(eleccion){
         case 0:
-            struct_to_csv();
+            nombre = "Datos_Inventario.csv";
+            struct_to_csv(nombre);
             break;
         case 1:
             inicio();
@@ -75,6 +73,9 @@ void menu_eleccion(int temp){
     switch (temp)
     {
     case 1:
+        if (productos>=lenght){
+            extender_datos_inv();
+        }
         agregar(productos);
         productos++;
         break;
@@ -105,79 +106,22 @@ void menu_eleccion(int temp){
         quicksort(datos_inv,0,productos-1,6);
         break;
 
+    case 8:
+        borrar_producto();
+        break;
+
+    case 9:
+        copiar_base();
+        break;   
+
+    case 10:
+        devolver_producto();
+        break; 
+
     default:
         cout<<"Eleccion erronea"<<endl;
         inicio();
         break;
     }
     volver_a_inicio();
-}
-
-void csv_to_struct(){
-    string dato;
-    int get_title=0;
-    int i = 0;
-    while(infile){
-        if(get_title==0){
-            getline(infile,dato,'\n');
-            titulo=dato;
-            get_title=1;
-        }
-        i++;
-        switch(i){
-            case 1:
-                getline(infile,dato,';');
-                datos_inv[productos].id=dato;
-                break;
-            case 2:
-                getline(infile,dato,';');
-                datos_inv[productos].nombre=dato;
-                break;
-            case 3:
-                getline(infile,dato,';');
-                datos_inv[productos].precio=dato;
-                break;
-            case 4:
-                getline(infile,dato,';');
-                datos_inv[productos].existencia=dato;
-                break;
-            case 5:
-                getline(infile,dato,';');
-                datos_inv[productos].max=dato;
-                break;
-            case 6:
-                getline(infile,dato,';');
-                datos_inv[productos].min=dato;
-                break;
-            case 7:
-                getline(infile,dato,';');
-                datos_inv[productos].ventas_dia=dato;
-                break;
-            case 8:
-                getline(infile,dato,';');
-                datos_inv[productos].ventas_mes=dato;
-                break;
-            case 9:
-                getline(infile,dato,'\n');
-                datos_inv[productos].ventas_ano=dato;
-                i=0;
-                productos++;
-                break;
-        }
-    }
-}
-
-void struct_to_csv(){
-    int i = 0;
-    outfile.open("Datos_Inventario.csv");
-    outfile<<titulo<<endl;
-    while(outfile){ 
-        if(i<productos){
-            outfile<<datos_inv[i].id<<";"<<datos_inv[i].nombre<<";"<<datos_inv[i].precio<<";"<<datos_inv[i].existencia<<";"<<datos_inv[i].max<<";"<<datos_inv[i].min<<";"<<datos_inv[i].ventas_dia<<";"<<datos_inv[i].ventas_mes<<";"<<datos_inv[i].ventas_ano<<endl;
-        }
-        else{
-            outfile.close();
-        }
-        i++;
-    }
 }
